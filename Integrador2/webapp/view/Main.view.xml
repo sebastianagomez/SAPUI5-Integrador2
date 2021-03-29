@@ -1,0 +1,31 @@
+<mvc:View controllerName="Integrador2.Integrador2.controller.Main" displayBlock="true"  
+xmlns:mvc="sap.ui.core.mvc"
+xmlns="sap.m">
+
+<Page title="{i18n>integrador}" backgroundDesign="List">
+    <content>
+    <List
+        items="{productoJSON>/value}"
+        mode="SingleSelectMaster"
+        selectionChange="onSelectionChange"
+        headerText="{i18n>productos}"
+        id="idListProducts">
+        <headerToolbar>
+            <OverflowToolbar width="100%">
+                <content>                    
+                    <SearchField width="auto" placeholder="{i18n>placeholderSearch}" liveChange="onSearch"/>                    
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
+        <items>
+            <StandardListItem 
+                title="{productoJSON>ProductName}" 
+                type="Active"
+                press="onSelectionChange"
+                info="{productoJSON>UnitPrice}"/>
+        </items>
+    </List>
+    </content>
+</Page>
+
+</mvc:View>

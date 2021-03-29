@@ -1,0 +1,21 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+<Dialog id="idDialogEditProductos" title="{i18n>editar}" >
+
+    <VBox>
+        <Table items="{productoJSON>/value}">
+            <Label text="{i18n>nombredelproducto}" labelFor="inputUrl" />
+            <Input placeholder="{productoJSON>ProductName}"/>
+            <Label text="{i18n>cantidad}" labelFor="inputUrl" />
+            <Input placeholder="{productoJSON>QuantityPerUnit}"/>
+            <Label text="{i18n>precio}" labelFor="inputUrl" />
+            <Input placeholder="{productoJSON>UnitPrice}"/>
+            <Label text="{i18n>stock}" labelFor="inputUrl" />
+            <Input placeholder="{productoJSON>UnitsInStock}"/>
+        </Table>
+    </VBox>
+
+    <beginButton>
+        <Button text="{i18n>cerrar}" press=".onCloseDialog"></Button>
+    </beginButton>
+</Dialog>
+</core:FragmentDefinition>
