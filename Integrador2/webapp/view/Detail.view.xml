@@ -5,34 +5,36 @@ xmlns:core="sap.ui.core"
 xmlns:u="sap.ui.unified"
 xmlns="sap.m"> 
 
-<Page backgroundDesign="Solid">
+<Page backgroundDesign="Solid" title="{productoSelectJSON>/ProductName}">
     <content>
         <ObjectHeader
+            intro="{Description}"
             title="{productoSelectJSON>/ProductName}"
-            condensed="true"
-            number="{productoJSON>UnitPrice}"
-            numberUnit="{CurrencyCode}"
-            class="sapUiResponsivePadding--header" >
+            class="sapUiResponsivePadding--header"
+            number= "{path:'productoSelectJSON>/UnitPrice', formatter:'.Formatter.formatPrecio'}">            
+            <ObjectAttribute title="{i18n>categoria}" text="{productoCatJSON>/CategoryName}"/>
             <statuses>
                 <ObjectStatus
-                    text="In Stock"
-                    state="Success" />
+                    text="{path:'productoSelectJSON>/UnitsInStock',
+                            formatter:'.Formatter.formatStock'}"
+                    state="{path:'productoSelectJSON>/UnitsInStock',
+                            formatter:'.Formatter.formatStockColor'}"/>
             </statuses>
         </ObjectHeader>
 
         <IconTabBar>
             <items>
-                <IconTabFilter text="{i18n>infogeneral}" key="info">
+                <IconTabFilter text="{i18n>infogeneral}">
                     <f:SimpleForm title="{i18n>infogeneral}">
                         <f:content>
-                            <Label text="{i18n>categoria}"/>
-                            <Text text="{productoCatJSON>/CategoryName}" />
+                            <Label text="{i18n>productoid}"/>
+                            <Text text="{productoCatJSON>/CategoryID}" />
                             <Label text="{i18n>descripcion}"/>
                             <Text text="{productoCatJSON>/Description}" />
                         </f:content>
                     </f:SimpleForm>
                 </IconTabFilter>
-                <IconTabFilter text="{i18n>proveedor}" key="sup">
+                <IconTabFilter text="{i18n>proveedor}">
                     <f:SimpleForm title="{i18n>proveedor}">
                         <f:content>
                             <Label text="{i18n>nombreCompania}"/>

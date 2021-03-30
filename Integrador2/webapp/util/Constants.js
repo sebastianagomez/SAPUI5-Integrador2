@@ -5,6 +5,10 @@ sap.ui.define([], function(){
             I18N: "i18n",
         },
 
+        MODELS:{
+            ProductsLength:"modelProductsLength",
+        },
+
         names: {
             Models: {
                 modelProduct: "productoJSON",

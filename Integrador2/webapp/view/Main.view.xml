@@ -2,7 +2,7 @@
 xmlns:mvc="sap.ui.core.mvc"
 xmlns="sap.m">
 
-<Page title="{i18n>integrador}" backgroundDesign="List">
+<Page title="{i18n>productos} ({modelProductsLength>/})" backgroundDesign="List">
     <content>
     <List
         items="{productoJSON>/value}"
@@ -12,17 +12,26 @@ xmlns="sap.m">
         id="idListProducts">
         <headerToolbar>
             <OverflowToolbar width="100%">
-                <content>                    
-                    <SearchField width="auto" placeholder="{i18n>placeholderSearch}" liveChange="onSearch"/>                    
+                <content>
+                    <Button tooltip="Ordenar" icon="sap-icon://sort" press="onSort"/>
+                    <Button tooltip="Filtrar" icon="sap-icon://filter" press="onFilter"/>                    
+                    <SearchField width="60%" placeholder="{i18n>placeholderSearch}" liveChange="onSearch"/>                    
                 </content>
             </OverflowToolbar>
         </headerToolbar>
+        <infoToolbar>
+            <OverflowToolbar id="vsdFilterBar" visible="false">
+            <Text id="vsdFilterLabel"/>
+            </OverflowToolbar>
+        </infoToolbar>
+
+        
         <items>
             <StandardListItem 
                 title="{productoJSON>ProductName}" 
                 type="Active"
                 press="onSelectionChange"
-                info="{productoJSON>UnitPrice}"/>
+                info="{path:'productoJSON>UnitPrice', formatter: '.Formatter.formatPrecio'}"/>
         </items>
     </List>
     </content>

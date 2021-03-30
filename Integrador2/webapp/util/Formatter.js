@@ -7,20 +7,33 @@ sap.ui.define([
     'use strict';
     return{
 
-        formatColor: function(nPeso){
-
-            if(!nPeso){
+        formatPrecio: function(nPrecio){
+            if(!nPrecio){
                 return;
-            } else{
-                nPeso = parseFloat(nPeso);
-                if(nPeso < 1){
-                    return "Success"
-                } else if (nPeso >= 1 && nPeso <= 2){
-                    return "Warning"
-                } else {
-                    return "Error";
-                }
+            }else{
+                let pValor = Math.floor(nPrecio* 100) / 100;
+                return pValor+" USD";
             }
         },
+
+        formatStock: function(nStock){
+            if(nStock === 0){
+                return "Out Stock"
+            }else if(nStock >= 1 && nStock < 20){
+                return "Little Stock"
+            }else{
+                return "In Stock"
+            }
+        },
+
+        formatStockColor: function(nStock){
+            if(nStock === 0){
+                return "Error"
+            }else if(nStock >= 1 && nStock < 10){
+                return "Warning"
+            }else{
+                return "Success"
+            }                
+        },       
 
 }}, true);

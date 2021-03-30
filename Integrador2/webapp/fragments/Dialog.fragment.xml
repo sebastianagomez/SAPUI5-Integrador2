@@ -1,21 +1,23 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
-<Dialog id="idDialogEditProductos" title="{i18n>editar}" >
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" >
 
-    <VBox>
-        <Table items="{productoJSON>/value}">
-            <Label text="{i18n>nombredelproducto}" labelFor="inputUrl" />
-            <Input placeholder="{productoJSON>ProductName}"/>
-            <Label text="{i18n>cantidad}" labelFor="inputUrl" />
-            <Input placeholder="{productoJSON>QuantityPerUnit}"/>
-            <Label text="{i18n>precio}" labelFor="inputUrl" />
-            <Input placeholder="{productoJSON>UnitPrice}"/>
-            <Label text="{i18n>stock}" labelFor="inputUrl" />
-            <Input placeholder="{productoJSON>UnitsInStock}"/>
-        </Table>
-    </VBox>
+<Dialog id="idDialogEditProductos" title="{i18n>infoEditar}">
+    <f:SimpleForm>
+   <f:content>
+    <!-- Quise que el value me muestre el elemento guardado del Modelo para poder editarlo -->
+        <Label text="{i18n>nombredelproducto}" />
+        <Input value="{productoJSON>/ProductName}"/>
 
-    <beginButton>
-        <Button text="{i18n>cerrar}" press=".onCloseDialog"></Button>
-    </beginButton>
+        <Label text="{i18n>cantidad}"/>
+        <Input value="{productoJSON>/QuantityPerUnit}"/>
+
+        <Label text="{i18n>precio}"/>
+        <Input value="{productoJSON>/UnitPrice}"/>
+
+        <Label text="{i18n>stock}"/>
+        <Input value="{productoJSON>/UnitsInStock}"/>
+   </f:content>
+   </f:SimpleForm>
+        <Button text="{i18n>Accept}" press="onCloseDialog" type="Accept" />
+        <Button text="{i18n>Close}" press="onCloseDialog" type="Reject" />
 </Dialog>
 </core:FragmentDefinition>
