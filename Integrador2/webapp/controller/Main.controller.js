@@ -171,6 +171,7 @@ sap.ui.define([
                 },
 
             // Funcion principal para tener varios dialogs  
+            // Mas funciones...
 
                 createViewSettingsDialog: function (sDialogFragmentName) {
                     var oDialog;
